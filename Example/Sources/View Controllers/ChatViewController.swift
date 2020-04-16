@@ -214,6 +214,10 @@ extension ChatViewController: MessageCellDelegate {
     func didTapMessageBottomLabel(in cell: MessageCollectionViewCell) {
         print("Bottom label tapped")
     }
+    
+    func didTapInfoMenuItem(of indexPath: IndexPath) {
+        print("Info menu item tapped")
+    }
 
     func didTapPlayButton(in cell: AudioMessageCell) {
         guard let indexPath = messagesCollectionView.indexPath(for: cell),

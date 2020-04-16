@@ -159,6 +159,11 @@ public protocol MessageCellDelegate: MessageLabelDelegate {
     /// method `messageForItem(at:indexPath:messagesCollectionView)`.
     func didStopAudio(in cell: AudioMessageCell)
 
+    ///Triggered when the user taps Info menu item
+    ///
+    /// - Parameters:
+    ///   - indexPath: The indexPath of the cell displaying the menu controller
+    func didTapInfoMenuItem(of indexPath: IndexPath)
 }
 
 public extension MessageCellDelegate {

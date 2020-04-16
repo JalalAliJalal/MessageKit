@@ -389,27 +389,11 @@ UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
         if isSectionReservedForTypingIndicator(indexPath.section) {
             return false
         }
-        return (action == NSSelectorFromString("copy:"))
+        
+        return true
     }
 
-    open func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-        guard let messagesDataSource = messagesCollectionView.messagesDataSource else {
-            fatalError(MessageKitError.nilMessagesDataSource)
-        }
-        let pasteBoard = UIPasteboard.general
-        let message = messagesDataSource.messageForItem(at: indexPath, in: messagesCollectionView)
-
-        switch message.kind {
-        case .text(let text), .emoji(let text):
-            pasteBoard.string = text
-        case .attributedText(let attributedText):
-            pasteBoard.string = attributedText.string
-        case .photo(let mediaItem):
-            pasteBoard.image = mediaItem.image ?? mediaItem.placeholderImage
-        default:
-            break
-        }
-    }
+    open func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {}
 
     // MARK: - Helpers
     

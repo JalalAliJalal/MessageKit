@@ -376,6 +376,7 @@
 				TargetAttributes = {
 					882B5E321CF7D4B900B6E160 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = YLL2HFTF3U;
 						LastSwiftMigration = 0800;
 					};
 					882B5E481CF7D4B900B6E160 = {
@@ -713,10 +714,10 @@
 			baseConfigurationReference = A830E27DBE0B66B89C5D2EB8 /* Pods-ChatExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = YLL2HFTF3U;
 				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.messagekit.ChatExample;
+				PRODUCT_BUNDLE_IDENTIFIER = Jalal.ChatExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -727,10 +728,10 @@
 			baseConfigurationReference = 9E0D67CD75BA7EB323FD391B /* Pods-ChatExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = YLL2HFTF3U;
 				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.messagekit.ChatExample;
+				PRODUCT_BUNDLE_IDENTIFIER = Jalal.ChatExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;

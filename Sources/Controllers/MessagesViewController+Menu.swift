@@ -44,13 +44,12 @@ internal extension MessagesViewController {
 
         guard let currentMenuController = notification.object as? UIMenuController,
             let selectedIndexPath = selectedIndexPathForMenu else { return }
-
+        
         NotificationCenter.default.removeObserver(self, name: UIMenuController.willShowMenuNotification, object: nil)
         defer {
             NotificationCenter.default.addObserver(self,
                                                    selector: #selector(MessagesViewController.menuControllerWillShow(_:)),
                                                    name: UIMenuController.willShowMenuNotification, object: nil)
-            selectedIndexPathForMenu = nil
         }
 
         currentMenuController.setMenuVisible(false, animated: false)
@@ -84,8 +83,44 @@ internal extension MessagesViewController {
             currentMenuController.arrowDirection = .up
         }
 
+        //Configure menu
+        let infoMenuItem = UIMenuItem(title: "Info", action: #selector(self.infoMenuItemTapped))
+        let copyMenuItem = UIMenuItem(title: "Copy", action: #selector(self.copyMenuItemTapped))
+        currentMenuController.menuItems = [copyMenuItem, infoMenuItem]
+        
         currentMenuController.setTargetRect(targetRect, in: view)
         currentMenuController.setMenuVisible(true, animated: true)
+        currentMenuController.update()
+    }
+    
+    @objc func infoMenuItemTapped() {
+        if let indexPath = selectedIndexPathForMenu {
+            messagesCollectionView.messageCellDelegate?.didTapInfoMenuItem(of: indexPath)
+        }
+        
+        selectedIndexPathForMenu = nil
+    }
+    
+    @objc func copyMenuItemTapped() {
+        guard let indexPath = selectedIndexPathForMenu else { return }
+        guard let messagesDataSource = messagesCollectionView.messagesDataSource else {
+            fatalError(MessageKitError.nilMessagesDataSource)
+        }
+        let pasteBoard = UIPasteboard.general
+        let message = messagesDataSource.messageForItem(at: indexPath, in: messagesCollectionView)
+
+        switch message.kind {
+        case .text(let text), .emoji(let text):
+            pasteBoard.string = text
+        case .attributedText(let attributedText):
+            pasteBoard.string = attributedText.string
+        case .photo(let mediaItem):
+            pasteBoard.image = mediaItem.image ?? mediaItem.placeholderImage
+        default:
+            break
+        }
+        
+        selectedIndexPathForMenu = nil
     }
 
     // MARK: - Helpers
