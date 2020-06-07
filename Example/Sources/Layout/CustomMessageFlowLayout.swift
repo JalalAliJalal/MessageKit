@@ -27,7 +27,7 @@ import MessageKit
 
 open class CustomMessagesFlowLayout: MessagesCollectionViewFlowLayout {
     
-    open lazy var customMessageSizeCalculator = CustomMessageSizeCalculator(layout: self)
+    open lazy var customMessageSizeCalculator = WhatsAppMessageSizeCalculator(layout: self)
     
     open override func cellSizeCalculatorForItem(at indexPath: IndexPath) -> CellSizeCalculator {
         if isSectionReservedForTypingIndicator(indexPath.section) {

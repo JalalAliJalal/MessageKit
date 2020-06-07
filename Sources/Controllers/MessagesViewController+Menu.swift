@@ -85,8 +85,9 @@ internal extension MessagesViewController {
 
         //Configure menu
         let infoMenuItem = UIMenuItem(title: "Info", action: #selector(self.infoMenuItemTapped))
+        let deleteMenuItem = UIMenuItem(title: "Delete", action: #selector(self.deleteMenuItemTapped))
         let copyMenuItem = UIMenuItem(title: "Copy", action: #selector(self.copyMenuItemTapped))
-        currentMenuController.menuItems = [copyMenuItem, infoMenuItem]
+        currentMenuController.menuItems = [copyMenuItem, infoMenuItem, deleteMenuItem]
         
         currentMenuController.setTargetRect(targetRect, in: view)
         currentMenuController.setMenuVisible(true, animated: true)
@@ -96,6 +97,14 @@ internal extension MessagesViewController {
     @objc func infoMenuItemTapped() {
         if let indexPath = selectedIndexPathForMenu {
             messagesCollectionView.messageCellDelegate?.didTapInfoMenuItem(of: indexPath)
+        }
+        
+        selectedIndexPathForMenu = nil
+    }
+    
+    @objc func deleteMenuItemTapped() {
+        if let indexPath = selectedIndexPathForMenu {
+            messagesCollectionView.messageCellDelegate?.didTapDeleteMenuItem(of: indexPath)
         }
         
         selectedIndexPathForMenu = nil

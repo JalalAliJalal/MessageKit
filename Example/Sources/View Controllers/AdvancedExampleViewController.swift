@@ -33,7 +33,7 @@ final class AdvancedExampleViewController: ChatViewController {
     
     override func viewDidLoad() {
         messagesCollectionView = MessagesCollectionView(frame: .zero, collectionViewLayout: CustomMessagesFlowLayout())
-        messagesCollectionView.register(CustomCell.self)
+        messagesCollectionView.register(WhatsAppTextMessageCell.self)
         super.viewDidLoad()
         
         updateTitleView(title: "MessageKit", subtitle: "2 Online")
@@ -229,7 +229,7 @@ final class AdvancedExampleViewController: ChatViewController {
 
         let message = messagesDataSource.messageForItem(at: indexPath, in: messagesCollectionView)
         if case .custom = message.kind {
-            let cell = messagesCollectionView.dequeueReusableCell(CustomCell.self, for: indexPath)
+            let cell = messagesCollectionView.dequeueReusableCell(WhatsAppTextMessageCell.self, for: indexPath)
             cell.configure(with: message, at: indexPath, and: messagesCollectionView)
             return cell
         }
