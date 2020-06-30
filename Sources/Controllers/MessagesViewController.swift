@@ -377,7 +377,7 @@ UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
         let message = messagesDataSource.messageForItem(at: indexPath, in: messagesCollectionView)
 
         switch message.kind {
-        case .text, .attributedText, .emoji, .photo:
+        case .text, .attributedText, .emoji, .photo, .video, .audio, .custom:
             selectedIndexPathForMenu = indexPath
             return true
         default:
