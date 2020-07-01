@@ -124,7 +124,7 @@ internal extension MessagesViewController {
         case .attributedText(let attributedText):
             pasteBoard.string = attributedText.string
         case .photo(let mediaItem):
-            pasteBoard.image = mediaItem.image ?? mediaItem.placeholderImage
+            pasteBoard.image = getImageFromIndexPath(indexPath) ?? mediaItem.placeholderImage
         default:
             break
         }
@@ -139,5 +139,25 @@ internal extension MessagesViewController {
             return .zero
         }
         return navigationController.navigationBar.frame
+    }
+    
+    private func getImageFromIndexPath(_ indexPath: IndexPath) -> UIImage? {
+        guard let cell = messagesCollectionView.cellForItem(at: indexPath) else {
+            return nil
+        }
+        
+        if let contentView = cell.subviews.first {
+            for view in contentView.subviews {
+                if let messageContainerView = view as? MessageContainerView {
+                    for view in messageContainerView.subviews {
+                        if let imageView = view as? UIImageView {
+                            return imageView.image
+                        }
+                    }
+                }
+            }
+        }
+        
+        return nil
     }
 }

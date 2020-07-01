@@ -319,7 +319,7 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
             let context = substring.attribute(.autocompletedContext, at: 0, effectiveRange: nil)
             print("Autocompleted: `", substring, "` with context: ", context ?? [])
         }
-
+        
         let components = inputBar.inputTextView.components
         messageInputBar.inputTextView.text = String()
         messageInputBar.invalidatePlugins()
