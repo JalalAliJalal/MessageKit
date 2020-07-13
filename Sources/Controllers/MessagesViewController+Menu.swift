@@ -123,10 +123,8 @@ internal extension MessagesViewController {
             pasteBoard.string = text
         case .attributedText(let attributedText):
             pasteBoard.string = attributedText.string
-        case .photo(let mediaItem):
-            pasteBoard.image = getImageFromIndexPath(indexPath) ?? mediaItem.placeholderImage
         default:
-            break
+            messagesCollectionView.messageCellDelegate?.didTapCopyMenuItem(of: indexPath)
         }
         
         selectedIndexPathForMenu = nil

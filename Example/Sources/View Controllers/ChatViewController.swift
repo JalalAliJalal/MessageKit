@@ -222,6 +222,10 @@ extension ChatViewController: MessageCellDelegate {
     func didTapDeleteMenuItem(of indexPath: IndexPath) {
         print("Delete menu item tapped")
     }
+    
+    func didTapCopyMenuItem(of indexPath: IndexPath) {
+        print("Copy menu item tapped")
+    }
 
     func didTapPlayButton(in cell: AudioMessageCell) {
         guard let indexPath = messagesCollectionView.indexPath(for: cell),

@@ -170,6 +170,12 @@ public protocol MessageCellDelegate: MessageLabelDelegate {
     /// - Parameters:
     ///   - indexPath: The indexPath of the cell displaying the menu controller
     func didTapDeleteMenuItem(of indexPath: IndexPath)
+    
+    ///Triggered when the user taps copy menu item
+    ///
+    /// - Parameters:
+    ///   - indexPath: The indexPath of the cell displaying the menu controller
+    func didTapCopyMenuItem(of indexPath: IndexPath)
 }
 
 public extension MessageCellDelegate {
